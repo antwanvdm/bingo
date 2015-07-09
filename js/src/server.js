@@ -151,7 +151,7 @@ var items = [
 socket.on('connection', function (socket)
 {
     //Whenever a user connects, send him the bingo items
-    socket.emit('items', items);
+    socket.emit('items', JSON.stringify(items));
 
     socket.on('click', function (data)
     {

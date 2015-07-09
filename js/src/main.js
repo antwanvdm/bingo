@@ -6,7 +6,7 @@ Notification.requestPermission();
 
 socket.on('items', function (data)
 {
-    bingoCardInstance.setState({items: data});
+    bingoCardInstance.setState({items: JSON.parse(data)});
 });
 
 socket.on('status', function (data)
