@@ -35,7 +35,7 @@ var items = [
         id: 7
     },
     {
-        text: 'Antwan zegt: "Ik heb veel … maar dit …"',
+        text: 'Antwan zegt: "Ik heb veel ... maar dit ..."',
         id: 8
     },
     {
@@ -115,7 +115,7 @@ var items = [
         id: 27
     },
     {
-        text: 'Iemand is ‘verward’',
+        text: 'Iemand is "verward"',
         id: 28
     },
     {
@@ -143,15 +143,47 @@ var items = [
         id: 34
     },
     {
-        text: 'Iemand vraagt of je ‘weleens zonder tandjes hebt gelachen’ o.i.d.',
+        text: 'Iemand vraagt of je "weleens zonder tandjes hebt gelachen" o.i.d.',
         id: 35
+    },
+    {
+        text: 'Wat gebeurt er eigenlijk allemaal?!',
+        id: 36
     }
 ];
+
+
+/**
+ * @returns {Number} Random number between the two given from and to variables
+ */
+function getRandomNumber(from, to)
+{
+    return Math.floor(Math.random() * (to - from + 1) + from);
+}
+
+function getBingoItems()
+{
+    //Define variables
+    var originalItems = items.slice();
+    var bingoItems = [];
+
+    //Loop for each needed bingo item
+    for (var i = 0; i < 16; i++) {
+        //Generate a random number and splice it from the total bingo items that are still left
+        var randomNumber = getRandomNumber(0, originalItems.length - 1);
+        var randomItem = originalItems.splice(randomNumber, 1)[0];
+
+        //Add the BingoItem object to the array
+        bingoItems.push(randomItem);
+    }
+
+    return bingoItems;
+}
 
 socket.on('connection', function (socket)
 {
     //Whenever a user connects, send him the bingo items
-    socket.emit('items', JSON.stringify(items));
+    socket.emit('items', getBingoItems());
 
     socket.on('click', function (data)
     {
