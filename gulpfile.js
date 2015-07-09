@@ -8,8 +8,6 @@ var jsBuildPath = 'js/dist';
 
 //Javascript files list
 var javascriptFiles = [
-    'node_modules/react/dist/react.js',
-    'node_modules/react/dist/JSXTransformer.js',
     'js/src/modules/*.js',
     'js/src/main.js'
 ];
@@ -21,7 +19,6 @@ var javascriptFiles = [
 gulp.task('build-js', function ()
 {
     return gulp.src(javascriptFiles)
-        .pipe(uglify())
         .pipe(concat('final.min.js'))
         .pipe(gulp.dest(jsBuildPath));
 });
