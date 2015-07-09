@@ -9,8 +9,8 @@ var jsBuildPath = 'js/dist';
 //Javascript files list
 var javascriptFiles = [
     'js/src/main.js',
-    'js/src/modules/bingoItem.js',
-    'js/src/modules/bingoCard.js'
+    'js/src/modules/BingoItem.js',
+    'js/src/modules/BingoCard.js'
 ];
 
 /**
