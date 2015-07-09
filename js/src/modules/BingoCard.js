@@ -36,10 +36,10 @@ var BingoCard = React.createClass({
 
             //Generate a random number and splice it from the total bingo items that are still left
             var randomNumber = this.randomNumber(0, itemStack.length - 1);
-            var randomItem = itemStack.splice(randomNumber, 1);
+            var randomItem = itemStack.splice(randomNumber, 1)[0];
 
             //Add the BingoItem object to the array
-            bingoItems.push(<BingoItem string={randomItem} />);
+            bingoItems.push(<BingoItem string={randomItem.text} id={randomItem.id} />);
 
         }
 

@@ -13,7 +13,7 @@ var BingoItem = React.createClass({
     render: function ()
     {
         return (
-            <div className="bingoItem" onClick={this.clickCard}>
+            <div className="bingoItem" data-id="{this.props.id}" onClick={this.clickCard}>
                 {this.props.string}
             </div>
         );
