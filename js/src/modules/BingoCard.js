@@ -5,6 +5,15 @@
 var BingoCard = React.createClass({
 
     /**
+     *
+     * @returns {Object}
+     */
+    getInitialState: function ()
+    {
+        return {items: []};
+    },
+
+    /**
      * Render this component
      * @public
      *
@@ -28,11 +37,11 @@ var BingoCard = React.createClass({
     getBingoItems: function ()
     {
         //Define variables
-        var itemStack = items;
+        var itemStack = this.state.items;
         var bingoItems = [];
 
         //Loop for each needed bingo item
-        for (var i = 0; i < 16; i++) {
+        for (var i = 0; i < itemStack.length; i++) {
 
             //Generate a random number and splice it from the total bingo items that are still left
             var randomNumber = this.randomNumber(0, itemStack.length - 1);
@@ -59,7 +68,5 @@ var BingoCard = React.createClass({
     }
 });
 
-React.render(
-    <BingoCard />,
-    document.getElementById('content')
-);
+var bingoCardInstance = React.render(<BingoCard />, document.getElementById('content'));
+
