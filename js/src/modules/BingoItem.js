@@ -1,4 +1,15 @@
+/**
+ * @class BingoItem
+ * @classdesc A BingoItem featured on the BingoCard
+ */
 var BingoItem = React.createClass({
+
+    /**
+     * Render this component
+     * @public
+     *
+     * @returns {XML} The HTML being converted by JSX
+     */
     render: function ()
     {
         return (
@@ -9,7 +20,10 @@ var BingoItem = React.createClass({
     },
 
     /**
-     * @param e
+     * Click handler for a Bingo BingoItem
+     * @private
+     *
+     * @param {Object} e - Event object from the click event
      */
     clickCard: function (e)
     {
