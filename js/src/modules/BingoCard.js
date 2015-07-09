@@ -1,15 +1,32 @@
 var BingoCard = React.createClass({
     render: function ()
     {
-        var bingoItems = [];
-        for(var i = 0; i < 16; i++){
-            bingoItems.push(<BingoItem string={items[i]} />);
-        }
         return (
             <div className="bingoCard">
-                {bingoItems}
+                {this.getBingoItems()}
             </div>
         );
+    },
+    getBingoItems: function()
+    {
+        var itemStack = items;
+        var bingoItems = [];
+
+        for(var i = 0; i < 16; i++){
+
+            var randomNumber = this.randomNumber(0, itemStack.length - 1);
+            var randomItem = itemStack.splice(randomNumber, 1);
+
+            bingoItems.push(<BingoItem string={randomItem} />);
+
+        }
+
+        return bingoItems;
+    },
+    randomNumber: function(from, to) {
+
+        return Math.floor(Math.random() * (to - from + 1) + from);
+
     }
 });
 
