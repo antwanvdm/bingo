@@ -1,3 +1,6 @@
+var host = window.location.hostname;
+var socket = io.connect("http://" + host + ":3000");
+
 var items = [
     'Amanda wordt woest',
     'Amanda snauwt Jon af',
@@ -35,3 +38,12 @@ var items = [
     'Iets over "het leven"',
     'Iemand vraagt of je ‘weleens zonder tandjes hebt gelachen’ o.i.d.'
 ];
+
+//@TODO move this code
+Notification.requestPermission();
+
+socket.on('status', function (data)
+{
+    console.log('status', data);
+    var notification = new Notification("Bingo update: " + data);
+});
