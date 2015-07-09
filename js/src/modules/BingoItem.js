@@ -14,7 +14,6 @@ var BingoItem = React.createClass({
     clickCard: function (e)
     {
         e.target.classList.add('strike-through');
-
-        //@TODO Notifications
+        socket.emit('click', e.target.innerHTML);
     }
 });
