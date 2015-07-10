@@ -35,20 +35,14 @@ var BingoCard = React.createClass({
      */
     getBingoItems: function ()
     {
-        //Define variables
-        var itemStack = this.state.items;
-        var bingoItems = [];
-
-        //Loop for each needed bingo item
-        for (var i = 0; i < itemStack.length; i++) {
-            //Add the BingoItem object to the array
-            bingoItems.push(<BingoItem string={itemStack[i].text} id={itemStack[i].id} />);
-        }
-
         //Return all Bingo Items
-        return bingoItems;
+        return this.state.items.map(function (item)
+        {
+            return <BingoItem string={item.text} id={item.id} />;
+        });
     }
 });
+
 
 var bingoCardInstance = React.render(<BingoCard />, document.getElementById('content'));
 
