@@ -1,5 +1,5 @@
 var host = window.location.hostname;
-var socket = io.connect("http://" + host + ":3000");
+var socket = io.connect("http://" + host + ":3001");
 
 //@TODO move this code
 Notification.requestPermission();
