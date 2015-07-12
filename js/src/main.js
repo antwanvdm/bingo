@@ -6,12 +6,10 @@ Notification.requestPermission();
 
 socket.on('items', function (data)
 {
-    console.log(data);
     bingoCardInstance.setState({items: data});
 });
 
-socket.on('status', function (data)
+socket.on('status', function (item)
 {
-    console.log('status', data);
-    var notification = new Notification("Bingo update: " + data);
+    var notification = new Notification("Bingo update: " + item.text);
 });

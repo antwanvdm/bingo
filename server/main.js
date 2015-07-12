@@ -9,6 +9,7 @@ var socket = io.listen(server);
 
 //Load data from JSON
 var items = require('./data.json');
+var itemChecklist = items.slice();
 
 /**
  * @returns {Number} Random number between the two given from and to variables
@@ -40,13 +41,38 @@ function getBingoItems()
     return bingoItems;
 }
 
+/**
+ * Remove the item from the itemChecklist & return the check item
+ *
+ * @param id
+ * @returns {number}
+ */
+function checkItemOfList(id)
+{
+    var index = arraySearchMultiDimensional(itemChecklist, 'id', parseInt(id));
+    return itemChecklist.splice(index, 1)[0];
+}
+
+/**
+ * @returns {number}
+ */
+function arraySearchMultiDimensional(array, key, value)
+{
+    for (var i = 0; i < array.length; i++) {
+        if (array[i][key] === value) {
+            return i;
+        }
+    }
+}
+
 socket.on('connection', function (socket)
 {
     //Whenever a user connects, send him the bingo items
     socket.emit('items', getBingoItems());
 
-    socket.on('click', function (data)
+    socket.on('click', function (id)
     {
-        socket.broadcast.emit('status', data);
+        var item = checkItemOfList(id);
+        socket.broadcast.emit('status', item);
     });
 });

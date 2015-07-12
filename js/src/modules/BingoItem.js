@@ -13,7 +13,7 @@ var BingoItem = React.createClass({
     render: function ()
     {
         return (
-            <div className="bingoItem" data-id="{this.props.id}" onClick={this.clickCard}>
+            <div className="bingoItem" data-id={this.props.id} onClick={this.clickCard}>
                 {this.props.string}
             </div>
         );
@@ -28,6 +28,6 @@ var BingoItem = React.createClass({
     clickCard: function (e)
     {
         e.target.classList.add('strike-through');
-        socket.emit('click', e.target.innerHTML);
+        socket.emit('click', e.target.dataset['id']);
     }
 });
