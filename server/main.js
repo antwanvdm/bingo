@@ -73,6 +73,7 @@ socket.on('connection', function (socket)
     socket.on('click', function (id)
     {
         var item = checkItemOfList(id);
+        console.log(item);
         socket.broadcast.emit('status', item);
     });
 });

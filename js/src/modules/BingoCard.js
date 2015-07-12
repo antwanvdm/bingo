@@ -38,8 +38,27 @@ var BingoCard = React.createClass({
         //Return all Bingo Items
         return this.state.items.map(function (item)
         {
-            return <BingoItem string={item.text} id={item.id} />;
+            var checked = (typeof item.checked !== "undefined");
+            return <BingoItem string={item.text} id={item.id} checked={checked}/>;
         });
+    },
+
+    /**
+     * Update an individual item updated from the outside
+     * @public
+     *
+     * @param item
+     */
+    checkItem: function (item)
+    {
+        this.state.items.forEach(function (currentItem, index)
+        {
+            if (currentItem.id === item.id) {
+                this.state.items[index].checked = true;
+            }
+        }.bind(this));
+
+        bingoCardInstance.setState({items: this.state.items});
     }
 });
 

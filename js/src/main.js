@@ -11,5 +11,6 @@ socket.on('items', function (data)
 
 socket.on('status', function (item)
 {
-    var notification = new Notification("Bingo update: " + item.text);
+    new Notification("Bingo update: " + item.text);
+    bingoCardInstance.checkItem(item);
 });

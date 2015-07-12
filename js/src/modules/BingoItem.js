@@ -12,8 +12,9 @@ var BingoItem = React.createClass({
      */
     render: function ()
     {
+        var className = 'bingo-item' + (this.props.checked ? ' strike-through' : '');
         return (
-            <div className="bingoItem" data-id={this.props.id} onClick={this.clickCard}>
+            <div className={className} data-id={this.props.id} onClick={this.clickCard}>
                 {this.props.string}
             </div>
         );
