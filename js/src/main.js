@@ -1,16 +1,47 @@
-var host = window.location.hostname;
-var socket = io.connect("http://" + host + ":3001");
+//Global vars
+var host, socket;
 
-//@TODO move this code
+//@TODO Refactor: Where does this code belong in a reactJS project?
+
+//Set vars for later use
+host = window.location.hostname;
+socket = io.connect("http://" + host + ":3001");
+
+//Request persmission from user to send notifications
 Notification.requestPermission();
 
-socket.on('items', function (data)
-{
-    bingoCardInstance.setState({items: data});
-});
+//Socket listeners
+socket.on('items', socketItemsListener);
+socket.on('status', socketStatusListener);
 
-socket.on('status', function (item)
+/**
+ * Listen to the items being send from the server
+ *
+ * @param items
+ */
+function socketItemsListener(items)
 {
-    new Notification("Bingo update: " + item.text);
+    bingoCardInstance.setState({items: items});
+}
+
+/**
+ * Listen to an individual item update
+ *
+ * @param item
+ */
+function socketStatusListener(item)
+{
+    var notification = new Notification("Bingo update: " + item.text);
+    setTimeout(hideCurrentNotification.bind(this, notification), 3000);
     bingoCardInstance.checkItem(item);
-});
+}
+
+/**
+ * Hide the notification that is blocking our view
+ *
+ * @param {Notification} notification
+ */
+function hideCurrentNotification(notification)
+{
+    notification.close();
+}
