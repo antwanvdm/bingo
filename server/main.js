@@ -45,12 +45,17 @@ function getBingoItems()
  * Remove the item from the itemChecklist & return the check item
  *
  * @param id
- * @returns {number}
+ * @returns {number|boolean}
  */
 function checkItemOfList(id)
 {
     var index = arraySearchMultiDimensional(itemChecklist, 'id', parseInt(id));
-    return itemChecklist.splice(index, 1)[0];
+
+    if (index > -1) {
+        return itemChecklist.splice(index, 1)[0];
+    }
+
+    return false;
 }
 
 /**
@@ -63,17 +68,36 @@ function arraySearchMultiDimensional(array, key, value)
             return i;
         }
     }
+
+    return -1;
 }
 
-socket.on('connection', function (socket)
+//Default connection handler when client connects to server
+socket.on('connection', socketConnectionHandler);
+
+/**
+ * @param socket
+ */
+function socketConnectionHandler(socket)
 {
     //Whenever a user connects, send him the bingo items
     socket.emit('items', getBingoItems());
 
-    socket.on('click', function (id)
-    {
-        var item = checkItemOfList(id);
-        console.log(item);
+    //Listeners within connection
+    socket.on('click', socketClickHandler.bind(this, socket));
+}
+
+/**
+ * Triggered when the client clicks a bingo item
+ *
+ * @param socket
+ * @param id
+ */
+function socketClickHandler(socket, id)
+{
+    var item = checkItemOfList(id);
+
+    if (item !== false) {
         socket.broadcast.emit('status', item);
-    });
-});
+    }
+}
