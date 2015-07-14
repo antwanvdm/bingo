@@ -32,7 +32,7 @@ function socketItemsListener(items)
 function socketStatusListener(item)
 {
     var notification = new Notification("Bingo update: " + item.text);
-    setTimeout(hideCurrentNotification.bind(this, notification), 3000);
+    setTimeout(closeNotification.bind(this, notification), 3000);
     bingoCardInstance.checkItem(item);
 }
 
@@ -41,7 +41,7 @@ function socketStatusListener(item)
  *
  * @param {Notification} notification
  */
-function hideCurrentNotification(notification)
+function closeNotification(notification)
 {
     notification.close();
 }
