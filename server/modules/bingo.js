@@ -1,12 +1,13 @@
 var utils = require('./utils.js');
 
 module.exports = {
-
     //Load data from JSON
     allItems: require('../data/items.json'),
     checkedItems: [],
 
     /**
+     * Get an array of randomly selected items
+     *
      * @returns {Array}
      */
     getRandomItems: function()
@@ -32,23 +33,28 @@ module.exports = {
      * Remove the item from the itemChecklist & return the check item
      *
      * @param id
-     * @returns {number|boolean}
+     * @returns {boolean}
      */
     checkItemOfList: function(id)
     {
-        if(!this.isItemChecked(id)){
-            this.checkedItems.push(id);
-            return true;
+        //If the item was already checked, return false
+        if(this.isItemChecked(id)){
+            return false;
         }
 
-        return false;
+        //If the item hasn't been checked before, add it to the checked list
+        this.checkedItems.push(id);
+        return true;
     },
 
+    /**
+     * Function to check whether an item is already checked or not
+     *
+     * @param id
+     * @returns {boolean}
+     */
     isItemChecked: function(id)
     {
-        var index = this.checkedItems.indexOf(id);
-
-        return index !== -1;
+        return (this.checkedItems.indexOf(id) !== -1);
     }
-
 };

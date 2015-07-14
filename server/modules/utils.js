@@ -1,5 +1,4 @@
 module.exports = {
-
     /**
      * @returns {Number} Random number between the two given from and to variables
      */
@@ -7,5 +6,4 @@ module.exports = {
     {
         return Math.floor(Math.random() * (to - from + 1) + from);
     }
-
 };

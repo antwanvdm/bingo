@@ -12,6 +12,8 @@ var socket = io.listen(server);
 socket.on('connection', socketConnectionHandler);
 
 /**
+ * Functionality executed whenever a client connects with the socket
+ *
  * @param socket
  */
 function socketConnectionHandler(socket)
