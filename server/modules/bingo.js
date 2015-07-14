@@ -9,7 +9,7 @@ module.exports = {
     /**
      * @returns {Array}
      */
-    getBingoItems: function()
+    getRandomItems: function()
     {
         //Define variables
         var originalItems = this.allItems.slice();
@@ -36,15 +36,19 @@ module.exports = {
      */
     checkItemOfList: function(id)
     {
-        var index = this.checkedItems.indexOf(id);
-
-        if (index === -1) {
-            return false;
+        if(!this.isItemChecked(id)){
+            this.checkedItems.push(id);
+            return true;
         }
 
-        this.checkedItems.push(index);
+        return false;
+    },
 
-        return true;
+    isItemChecked: function(id)
+    {
+        var index = this.checkedItems.indexOf(id);
+
+        return index !== -1;
     }
 
 };
