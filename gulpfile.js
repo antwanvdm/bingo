@@ -24,7 +24,7 @@ gulp.task('build-js', function ()
 {
     return gulp.src(javascriptFiles)
         .pipe(react())
-        .pipe(concat('final.min.js'))
+        .pipe(concat('final.js'))
         .pipe(gulp.dest(jsBuildPath));
 });
 
