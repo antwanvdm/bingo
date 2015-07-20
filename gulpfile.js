@@ -2,6 +2,7 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var react = require('gulp-react');
 
 //Folder paths
 var jsBuildPath = 'js/dist';
@@ -20,6 +21,7 @@ var javascriptFiles = [
 gulp.task('build-js', function ()
 {
     return gulp.src(javascriptFiles)
+        .pipe(react())
         .pipe(concat('final.min.js'))
         .pipe(gulp.dest(jsBuildPath));
 });
