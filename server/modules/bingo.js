@@ -30,6 +30,17 @@ module.exports = {
     },
 
     /**
+     * Find an item by referencing it's unique ID
+     *
+     * @param id
+     * @returns {object}
+     */
+    getItemById: function(id)
+    {
+        return this.allItems[id];
+    },
+
+    /**
      * Remove the item from the itemChecklist & return the check item
      *
      * @param id

@@ -34,6 +34,6 @@ function socketConnectionHandler(socket)
 function socketClickHandler(socket, id)
 {
     if(bingo.checkItemOfList(id)){
-        socket.broadcast.emit('status', id);
+        socket.broadcast.emit('status', bingo.getItemById(id));
     }
 }
