@@ -7,7 +7,7 @@ var host, socket;
 host = window.location.hostname;
 socket = io.connect("http://" + host + ":3001");
 
-//Request persmission from user to send notifications
+//Request permission from user to send notifications
 Notification.requestPermission();
 
 //Socket listeners

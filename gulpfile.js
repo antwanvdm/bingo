@@ -9,6 +9,8 @@ var jsBuildPath = 'js/dist';
 
 //Javascript files list
 var javascriptFiles = [
+    'node_modules/react/dist/react.js',
+    'node_modules/socket.io-client/socket.io.js',
     'js/src/main.js',
     'js/src/modules/BingoItem.js',
     'js/src/modules/BingoCard.js'
