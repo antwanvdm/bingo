@@ -1,19 +1,63 @@
 //Global vars
 var host, socket;
 
-//@TODO Refactor: Where does this code belong in a reactJS project?
+//Window loaded, start magic
+window.addEventListener('load', init);
 
-//Set vars for later use
-host = window.location.hostname;
-socket = io.connect("http://" + host + ":3001");
+/**
+ * @TODO Refactor: Where does this code belong in a reactJS project?
+ */
+function init()
+{
+    //Set vars for later use
+    host = window.location.hostname;
+    socket = io.connect("http://" + host + ":3001");
 
-//Request permission from user to send notifications
-Notification.requestPermission();
+    //Request permission from user to send notifications
+    Notification.requestPermission();
 
-//Socket listeners
-socket.on('items', socketItemsListener);
-socket.on('full', socketFullListener);
-socket.on('status', socketStatusListener);
+    //Socket listeners
+    this.setSocketListeners();
+
+    //Tell the server we have arrived
+    socket.emit('new', retrieveSessionId());
+}
+
+/**
+ * Retrieves the random sessionId.
+ *
+ * @todo move to separate hash class and extract in more subfunctions?
+ * @returns {string}
+ */
+function retrieveSessionId()
+{
+    //Check if item exists, than return
+    var currentSessionId = localStorage.getItem('sessionId');
+    if (currentSessionId !== null) {
+        return currentSessionId;
+    }
+
+    //Else create the sessionId @link http://stackoverflow.com/a/2117523
+    var sessionId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c)
+    {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+
+    //Save in storage & return
+    localStorage.setItem('sessionId', sessionId);
+    return sessionId;
+}
+
+/**
+ * NodeJS Socket event listeners
+ */
+function setSocketListeners()
+{
+    socket.on('items', socketItemsListener);
+    socket.on('full', socketFullListener);
+    socket.on('status', socketStatusListener);
+}
 
 /**
  * Listen to the items being send from the server

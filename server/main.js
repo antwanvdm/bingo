@@ -18,15 +18,25 @@ socket.on('connection', socketConnectionHandler);
  */
 function socketConnectionHandler(socket)
 {
-    //Whenever a user connects, send him the bingo items or tell them they have to wait
+    //Listeners within connection
+    socket.on('click', socketClickHandler.bind(this, socket));
+    socket.on('new', socketNewHandler.bind(this, socket));
+}
+
+/**
+ * Triggered when a new client connects
+ *
+ * @param socket
+ * @param sessionId
+ */
+function socketNewHandler(socket, sessionId)
+{
+    //Whenever a user is new, send him the bingo items or tell them they have to wait for a new round
     try {
-        socket.emit('items', bingo.getItems());
+        socket.emit('items', bingo.getItems(sessionId));
     } catch (e) {
         socket.emit('full');
     }
-
-    //Listeners within connection
-    socket.on('click', socketClickHandler.bind(this, socket));
 }
 
 /**

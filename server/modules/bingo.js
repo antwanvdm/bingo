@@ -3,6 +3,7 @@ var utils = require('./utils.js');
 module.exports = {
     //Load data from JSON
     allItems: require('../data/items.json'),
+    playerItems: {},
     checkedItems: [],
     maxStartItemsCheckedOf: 16,
 
@@ -11,8 +12,12 @@ module.exports = {
      *
      * @returns {Array}
      */
-    getItems: function ()
+    getItems: function (sessionId)
     {
+        if (typeof this.playerItems[sessionId] !== "undefined") {
+            return this.playerItems[sessionId];
+        }
+
         //Prevent people from getting items when game is too far ahead
         if (this.checkedItems.length > this.maxStartItemsCheckedOf) {
             throw false; //Well this is new...
@@ -32,6 +37,7 @@ module.exports = {
             bingoItems.push(randomItem);
         }
 
+        this.playerItems[sessionId] = bingoItems;
         return bingoItems;
     },
 
