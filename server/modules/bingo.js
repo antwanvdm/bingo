@@ -38,7 +38,7 @@ module.exports = {
         }
 
         this.playerItems[sessionId] = bingoItems;
-        return bingoItems;
+        return this.checkItems(bingoItems);
     },
 
     /**
