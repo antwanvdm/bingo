@@ -18,8 +18,12 @@ socket.on('connection', socketConnectionHandler);
  */
 function socketConnectionHandler(socket)
 {
-    //Whenever a user connects, send him the bingo items
-    socket.emit('items', bingo.getRandomItems());
+    //Whenever a user connects, send him the bingo items or tell them they have to wait
+    try {
+        socket.emit('items', bingo.getItems());
+    } catch (e) {
+        socket.emit('full');
+    }
 
     //Listeners within connection
     socket.on('click', socketClickHandler.bind(this, socket));
@@ -33,7 +37,7 @@ function socketConnectionHandler(socket)
  */
 function socketClickHandler(socket, id)
 {
-    if(bingo.checkItemOfList(id)){
+    if (bingo.checkItemOfList(id)) {
         socket.broadcast.emit('status', bingo.getItemById(id));
     }
 }

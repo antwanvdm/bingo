@@ -4,14 +4,20 @@ module.exports = {
     //Load data from JSON
     allItems: require('../data/items.json'),
     checkedItems: [],
+    maxStartItemsCheckedOf: 16,
 
     /**
      * Get an array of randomly selected items
      *
      * @returns {Array}
      */
-    getRandomItems: function()
+    getItems: function ()
     {
+        //Prevent people from getting items when game is too far ahead
+        if (this.checkedItems.length > this.maxStartItemsCheckedOf) {
+            throw false; //Well this is new...
+        }
+
         //Define variables
         var originalItems = this.allItems.slice();
         var bingoItems = [];
@@ -35,7 +41,7 @@ module.exports = {
      * @param id
      * @returns {object}
      */
-    getItemById: function(id)
+    getItemById: function (id)
     {
         return this.allItems[id];
     },
@@ -46,10 +52,10 @@ module.exports = {
      * @param id
      * @returns {boolean}
      */
-    checkItemOfList: function(id)
+    checkItemOfList: function (id)
     {
         //If the item was already checked, return false
-        if(this.isItemChecked(id)){
+        if (this.isItemChecked(id)) {
             return false;
         }
 
@@ -64,7 +70,7 @@ module.exports = {
      * @param id
      * @returns {boolean}
      */
-    isItemChecked: function(id)
+    isItemChecked: function (id)
     {
         return (this.checkedItems.indexOf(id) !== -1);
     }

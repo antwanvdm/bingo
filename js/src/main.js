@@ -12,6 +12,7 @@ Notification.requestPermission();
 
 //Socket listeners
 socket.on('items', socketItemsListener);
+socket.on('full', socketFullListener);
 socket.on('status', socketStatusListener);
 
 /**
@@ -22,6 +23,16 @@ socket.on('status', socketStatusListener);
 function socketItemsListener(items)
 {
     bingoCardInstance.setState({items: items});
+}
+
+/**
+ * Listen to the items being send from the server
+ *
+ * @param items
+ */
+function socketFullListener(items)
+{
+    alert("Wacht even op de volgende ronde!");
 }
 
 /**
