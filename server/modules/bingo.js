@@ -15,7 +15,7 @@ module.exports = {
     getItems: function (sessionId)
     {
         if (typeof this.playerItems[sessionId] !== "undefined") {
-            return this.playerItems[sessionId];
+            return this.checkItems(this.playerItems[sessionId]);
         }
 
         //Prevent people from getting items when game is too far ahead
@@ -66,8 +66,26 @@ module.exports = {
         }
 
         //If the item hasn't been checked before, add it to the checked list
-        this.checkedItems.push(id);
+        this.checkedItems.push(parseInt(id));
         return true;
+    },
+
+    /**
+     * Mark items as checked on a current list
+     *
+     * @param list
+     * @returns {*}
+     */
+    checkItems: function (list)
+    {
+        list.forEach(function (item, index)
+        {
+            if (this.isItemChecked(item.id)) {
+                list[index].checked = true;
+            }
+        }.bind(this));
+
+        return list;
     },
 
     /**
@@ -78,6 +96,6 @@ module.exports = {
      */
     isItemChecked: function (id)
     {
-        return (this.checkedItems.indexOf(id) !== -1);
+        return (this.checkedItems.indexOf(parseInt(id)) !== -1);
     }
 };
