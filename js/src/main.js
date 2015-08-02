@@ -57,6 +57,7 @@ function setSocketListeners()
     socket.on('items', socketItemsListener);
     socket.on('full', socketFullListener);
     socket.on('status', socketStatusListener);
+    socket.on('bingo', socketBingoListener);
 }
 
 /**
@@ -99,4 +100,26 @@ function socketStatusListener(item)
 function closeNotification(notification)
 {
     notification.close();
+}
+
+/**
+ * Remove the card and show the winners of the Bingo match in a Notification
+ *
+ * @param winners
+ */
+function socketBingoListener(winners)
+{
+    var notification = new Notification("BINGO!!" + winners.join(','));
+    setTimeout(startNewRound.bind(this, notification), 10000);
+}
+
+/**
+ * Start a fresh new round by requesting new items
+ *
+ * @param notification
+ */
+function startNewRound(notification)
+{
+    closeNotification(notification);
+    socket.emit('new', retrieveSessionId());
 }

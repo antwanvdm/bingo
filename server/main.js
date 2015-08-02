@@ -50,9 +50,11 @@ function socketClickHandler(socket, id)
     if (bingo.checkItemOfList(id)) {
         socket.broadcast.emit('status', bingo.getItemById(id));
 
-        var winningPlayers = bingo.playerHasWon();
-        if (winningPlayers.length > 0) {
-            mainSocket.sockets.emit('bingo', winningPlayers);
+        //Retrieve winning players, if any; finish the game
+        var winners = bingo.getWinners();
+        if (winners.length > 0) {
+            bingo.startNewRound();
+            mainSocket.sockets.emit('bingo', winners);
         }
     }
 }

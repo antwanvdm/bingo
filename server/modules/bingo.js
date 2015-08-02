@@ -77,7 +77,7 @@ module.exports = {
      *
      * @returns {Array}
      */
-    playerHasWon: function ()
+    getWinners: function ()
     {
         var winners = [];
 
@@ -141,5 +141,14 @@ module.exports = {
     isItemChecked: function (id)
     {
         return (this.checkedItems.indexOf(parseInt(id)) !== -1);
+    },
+
+    /**
+     * Reset variables to default state
+     */
+    startNewRound: function ()
+    {
+        this.playerItems = {};
+        this.checkedItems = [];
     }
 };
