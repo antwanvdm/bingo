@@ -49,5 +49,10 @@ function socketClickHandler(socket, id)
 {
     if (bingo.checkItemOfList(id)) {
         socket.broadcast.emit('status', bingo.getItemById(id));
+
+        var winningPlayers = bingo.playerHasWon();
+        if (winningPlayers.length > 0) {
+            io.sockets.emit('bingo', winningPlayers);
+        }
     }
 }

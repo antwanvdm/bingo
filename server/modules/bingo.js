@@ -5,6 +5,7 @@ module.exports = {
     allItems: require('../data/items.json'),
     playerItems: {},
     checkedItems: [],
+    cardsPerPlayer: 16,
     maxStartItemsCheckedOf: 16,
 
     /**
@@ -28,7 +29,7 @@ module.exports = {
         var bingoItems = [];
 
         //Loop for each needed bingo item
-        for (var i = 0; i < 16; i++) {
+        for (var i = 0; i < this.cardsPerPlayer; i++) {
             //Generate a random number and splice it from the total bingo items that are still left
             var randomNumber = utils.getRandomNumber(0, originalItems.length - 1);
             var randomItem = originalItems.splice(randomNumber, 1)[0];
@@ -65,9 +66,50 @@ module.exports = {
             return false;
         }
 
-        //If the item hasn't been checked before, add it to the checked list
+        //If the item hasn't been checked before, add it to the checked list & check it of everyones list
         this.checkedItems.push(parseInt(id));
+        this.checkItemsForAllPlayers();
         return true;
+    },
+
+    /**
+     * Check if a player has won & return an array of our lucky winners
+     *
+     * @returns {Array}
+     */
+    playerHasWon: function ()
+    {
+        var hasWon = [];
+
+        [].forEach.call(this.playerItems, function (items, userSessionId)
+        {
+            var totalItems = items.length;
+            var checkedItems = 0;
+
+            items.forEach(function (item)
+            {
+                if (typeof item.checked !== "undefined") {
+                    checkedItems++;
+                }
+            });
+
+            if (totalItems == checkedItems) {
+                hasWon.push(userSessionId);
+            }
+        }.bind(this));
+
+        return hasWon;
+    },
+
+    /**
+     * Check all the items of the lists of players
+     */
+    checkItemsForAllPlayers: function ()
+    {
+        [].forEach.call(this.playerItems, function (items, index)
+        {
+            this.checkItems(this.playerItems[index]);
+        }.bind(this));
     },
 
     /**
