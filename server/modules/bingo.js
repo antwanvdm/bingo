@@ -25,7 +25,7 @@ module.exports = {
         }
 
         //Define variables
-        var originalItems = this.allItems.slice();
+        var originalItems = JSON.parse(JSON.stringify(this.allItems)); //The only valid way to clone -_-
         var bingoItems = [];
 
         //Loop for each needed bingo item

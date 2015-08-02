@@ -121,5 +121,6 @@ function socketBingoListener(winners)
 function startNewRound(notification)
 {
     closeNotification(notification);
+    bingoCardInstance.resetItems();
     socket.emit('new', retrieveSessionId());
 }
