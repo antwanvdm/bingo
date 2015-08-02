@@ -79,13 +79,15 @@ module.exports = {
      */
     playerHasWon: function ()
     {
-        var hasWon = [];
+        var winners = [];
 
-        [].forEach.call(this.playerItems, function (items, userSessionId)
-        {
+        //Loop throug all the players
+        for (var userSessionId in this.playerItems) {
+            var items = this.playerItems[userSessionId];
             var totalItems = items.length;
             var checkedItems = 0;
 
+            //Check for every item if it's checked
             items.forEach(function (item)
             {
                 if (typeof item.checked !== "undefined") {
@@ -93,12 +95,13 @@ module.exports = {
                 }
             });
 
+            //Push current users in the winners array
             if (totalItems == checkedItems) {
-                hasWon.push(userSessionId);
+                winners.push(userSessionId);
             }
-        }.bind(this));
+        }
 
-        return hasWon;
+        return winners;
     },
 
     /**
@@ -106,10 +109,9 @@ module.exports = {
      */
     checkItemsForAllPlayers: function ()
     {
-        [].forEach.call(this.playerItems, function (items, index)
-        {
-            this.checkItems(this.playerItems[index]);
-        }.bind(this));
+        for (var userSessionId in this.playerItems) {
+            this.checkItems(this.playerItems[userSessionId]);
+        }
     },
 
     /**
