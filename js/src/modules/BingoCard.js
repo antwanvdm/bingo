@@ -58,7 +58,15 @@ var BingoCard = React.createClass({
             }
         }.bind(this));
 
-        bingoCardInstance.setState({items: this.state.items});
+        this.setState({items: this.state.items});
+    },
+
+    /**
+     * Reset all the items
+     */
+    resetItems: function ()
+    {
+        this.setState({items: []});
     }
 });
 

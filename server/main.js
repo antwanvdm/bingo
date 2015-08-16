@@ -6,10 +6,10 @@ var bingo = require('./modules/bingo.js');
 //Start server
 var server = http.createServer();
 server.listen(3001);
-var socket = io.listen(server);
+var mainSocket = io.listen(server);
 
 //Default connection handler when client connects to server
-socket.on('connection', socketConnectionHandler);
+mainSocket.on('connection', socketConnectionHandler);
 
 /**
  * Functionality executed whenever a client connects with the socket
@@ -49,5 +49,12 @@ function socketClickHandler(socket, id)
 {
     if (bingo.checkItemOfList(id)) {
         socket.broadcast.emit('status', bingo.getItemById(id));
+
+        //Retrieve winning players, if any; finish the game
+        var winners = bingo.getWinners();
+        if (winners.length > 0) {
+            bingo.startNewRound();
+            mainSocket.sockets.emit('bingo', winners);
+        }
     }
 }

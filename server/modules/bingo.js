@@ -5,6 +5,7 @@ module.exports = {
     allItems: require('../data/items.json'),
     playerItems: {},
     checkedItems: [],
+    cardsPerPlayer: 16,
     maxStartItemsCheckedOf: 16,
 
     /**
@@ -24,11 +25,11 @@ module.exports = {
         }
 
         //Define variables
-        var originalItems = this.allItems.slice();
+        var originalItems = JSON.parse(JSON.stringify(this.allItems)); //The only valid way to clone -_-
         var bingoItems = [];
 
         //Loop for each needed bingo item
-        for (var i = 0; i < 16; i++) {
+        for (var i = 0; i < this.cardsPerPlayer; i++) {
             //Generate a random number and splice it from the total bingo items that are still left
             var randomNumber = utils.getRandomNumber(0, originalItems.length - 1);
             var randomItem = originalItems.splice(randomNumber, 1)[0];
@@ -65,9 +66,52 @@ module.exports = {
             return false;
         }
 
-        //If the item hasn't been checked before, add it to the checked list
+        //If the item hasn't been checked before, add it to the checked list & check it of everyones list
         this.checkedItems.push(parseInt(id));
+        this.checkItemsForAllPlayers();
         return true;
+    },
+
+    /**
+     * Check if a player has won & return an array of our lucky winners
+     *
+     * @returns {Array}
+     */
+    getWinners: function ()
+    {
+        var winners = [];
+
+        //Loop throug all the players
+        for (var userSessionId in this.playerItems) {
+            var items = this.playerItems[userSessionId];
+            var totalItems = items.length;
+            var checkedItems = 0;
+
+            //Check for every item if it's checked
+            items.forEach(function (item)
+            {
+                if (typeof item.checked !== "undefined") {
+                    checkedItems++;
+                }
+            });
+
+            //Push current users in the winners array
+            if (totalItems == checkedItems) {
+                winners.push(userSessionId);
+            }
+        }
+
+        return winners;
+    },
+
+    /**
+     * Check all the items of the lists of players
+     */
+    checkItemsForAllPlayers: function ()
+    {
+        for (var userSessionId in this.playerItems) {
+            this.checkItems(this.playerItems[userSessionId]);
+        }
     },
 
     /**
@@ -97,5 +141,14 @@ module.exports = {
     isItemChecked: function (id)
     {
         return (this.checkedItems.indexOf(parseInt(id)) !== -1);
+    },
+
+    /**
+     * Reset variables to default state
+     */
+    startNewRound: function ()
+    {
+        this.playerItems = {};
+        this.checkedItems = [];
     }
 };
