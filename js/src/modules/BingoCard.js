@@ -60,5 +60,3 @@ var BingoCard = React.createClass({
         this.setState({items: this.state.items});
     }
 });
-
-var bingoCardInstance = React.render(<BingoCard />, document.getElementById('content'));

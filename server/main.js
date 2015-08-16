@@ -1,7 +1,13 @@
 //Require modules
 var http = require('http');
 var io = require('socket.io');
+var EventEmitter = require('events').EventEmitter;
 var bingo = require('./modules/bingo.js');
+var timer = require('./modules/timer.js');
+
+var events = new EventEmitter();
+timer.initialize(events);
+events.on("timer:seconds", timerSecondsHandler);
 
 //Start server
 var server = http.createServer();
@@ -53,8 +59,29 @@ function socketClickHandler(socket, id)
         //Retrieve winning players, if any; finish the game
         var winners = bingo.getWinners();
         if (winners.length > 0) {
+            var seconds = timer.start();
+            events.once("timer:finished", timerFinishedHandler);
+
             bingo.startNewRound();
-            mainSocket.sockets.emit('bingo', winners);
+            mainSocket.sockets.emit('bingo', {winners: winners, seconds: seconds});
         }
     }
+}
+
+/**
+ * Let the clients now the total seconds to wait before the new round starts
+ *
+ * @param seconds
+ */
+function timerSecondsHandler(seconds)
+{
+    mainSocket.sockets.emit('countDown', seconds);
+}
+
+/**
+ * Let everyone know, they can initiate a new round
+ */
+function timerFinishedHandler()
+{
+    mainSocket.sockets.emit('newRound');
 }

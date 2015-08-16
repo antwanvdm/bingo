@@ -4,6 +4,14 @@
  */
 var EndGame = React.createClass({
     /**
+     * @returns {Object}
+     */
+    getInitialState: function ()
+    {
+        return {seconds: this.props.seconds};
+    },
+
+    /**
      * Render this component
      * @public
      *
@@ -14,7 +22,7 @@ var EndGame = React.createClass({
         return (
             <div className="end-game">
                 <div class="winners">The winners are: {this.props.winners}</div>
-                <div class="countdown">Seconds before start of a new round: {this.props.seconds}</div>
+                <div class="countdown">Seconds before start of a new round: {this.state.seconds}</div>
             </div>
         );
     }
