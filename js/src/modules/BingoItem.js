@@ -15,7 +15,10 @@ var BingoItem = React.createClass({
         var className = 'bingo-item' + (this.props.checked ? ' strike-through' : '');
         return (
             <div className={className} data-id={this.props.id} onClick={this.clickCard}>
-                {this.props.string}
+                <div className="panel top">
+                    <div className="difficulty">{this.props.difficulty}</div>
+                    <div className="description">{this.props.string}</div>
+                </div>
             </div>
         );
     },
