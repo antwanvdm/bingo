@@ -56,7 +56,6 @@ function setSocketListeners()
 {
     socket.on('items', socketItemsListener);
     socket.on('full', socketFullListener);
-    socket.on('status', socketStatusListener);
     socket.on('bingo', socketBingoListener);
 }
 
@@ -67,6 +66,7 @@ function setSocketListeners()
  */
 function socketItemsListener(items)
 {
+    socket.on('status', socketStatusListener);
     bingoCardInstance.setState({items: items});
 }
 
@@ -77,7 +77,7 @@ function socketItemsListener(items)
  */
 function socketFullListener(items)
 {
-    alert("Wacht even op de volgende ronde!");
+    React.render(<WaitRound />, document.getElementById('content'));
 }
 
 /**
@@ -109,18 +109,15 @@ function closeNotification(notification)
  */
 function socketBingoListener(winners)
 {
-    var notification = new Notification("BINGO!!" + winners.join(','));
-    setTimeout(startNewRound.bind(this, notification), 10000);
+    React.render(<EndGame winners={winners.join(',')} seconds={10}/>, document.getElementById('content'));
+    setTimeout(startNewRound, 10000);
 }
 
 /**
  * Start a fresh new round by requesting new items
- *
- * @param notification
  */
-function startNewRound(notification)
+function startNewRound()
 {
-    closeNotification(notification);
-    bingoCardInstance.resetItems();
+    bingoCardInstance = React.render(<BingoCard />, document.getElementById('content'));
     socket.emit('new', retrieveSessionId());
 }
