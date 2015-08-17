@@ -6,7 +6,7 @@ module.exports = {
     playerItems: {},
     checkedItems: [],
     cardsPerPlayer: 16,
-    maxStartItemsCheckedOf: 16,
+    maxStartItemsCheckedOf: 3,
 
     /**
      * Get an array of randomly selected items

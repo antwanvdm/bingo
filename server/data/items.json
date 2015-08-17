@@ -180,8 +180,13 @@
         "id": 35
     },
     {
-      "text": "#basis",
-      "difficulty": 10,
-      "id": 36
+        "text": "#basis",
+        "difficulty": 10,
+        "id": 36
+    },
+    {
+        "text": "Beste vriend, AF!",
+        "difficulty": 10,
+        "id": 37
     }
 ]

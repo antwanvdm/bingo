@@ -3,7 +3,6 @@
  * @classdesc A BingoCard filled with multiple BingoItems
  */
 var BingoCard = React.createClass({
-
     /**
      * @returns {Object}
      */
@@ -59,17 +58,5 @@ var BingoCard = React.createClass({
         }.bind(this));
 
         this.setState({items: this.state.items});
-    },
-
-    /**
-     * Reset all the items
-     */
-    resetItems: function ()
-    {
-        this.setState({items: []});
     }
 });
-
-
-var bingoCardInstance = React.render(<BingoCard />, document.getElementById('content'));
-

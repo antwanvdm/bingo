@@ -1,5 +1,5 @@
 //Global vars
-var host, socket;
+var host, socket, bingoCardInstance, endGameInstance;
 
 //Window loaded, start magic
 window.addEventListener('load', init);
@@ -19,8 +19,8 @@ function init()
     //Socket listeners
     this.setSocketListeners();
 
-    //Tell the server we have arrived
-    socket.emit('new', retrieveSessionId());
+    //Start a new round
+    this.startNewRound();
 }
 
 /**
@@ -56,8 +56,9 @@ function setSocketListeners()
 {
     socket.on('items', socketItemsListener);
     socket.on('full', socketFullListener);
-    socket.on('status', socketStatusListener);
     socket.on('bingo', socketBingoListener);
+    socket.on('countDown', socketCountDownHandler);
+    socket.on('newRound', startNewRound);
 }
 
 /**
@@ -67,6 +68,7 @@ function setSocketListeners()
  */
 function socketItemsListener(items)
 {
+    socket.on('status', socketStatusListener);
     bingoCardInstance.setState({items: items});
 }
 
@@ -77,7 +79,7 @@ function socketItemsListener(items)
  */
 function socketFullListener(items)
 {
-    alert("Wacht even op de volgende ronde!");
+    React.render(<WaitRound />, document.getElementById('content'));
 }
 
 /**
@@ -105,22 +107,28 @@ function closeNotification(notification)
 /**
  * Remove the card and show the winners of the Bingo match in a Notification
  *
- * @param winners
+ * @param data
  */
-function socketBingoListener(winners)
+function socketBingoListener(data)
 {
-    var notification = new Notification("BINGO!!" + winners.join(','));
-    setTimeout(startNewRound.bind(this, notification), 10000);
+    endGameInstance = React.render(<EndGame winners={data.winners.join(',')} seconds={data.seconds}/>, document.getElementById('content'));
+}
+
+/**
+ * Set the new seconds that are retrieved
+ *
+ * @param seconds
+ */
+function socketCountDownHandler(seconds)
+{
+    endGameInstance.setState({seconds: seconds});
 }
 
 /**
  * Start a fresh new round by requesting new items
- *
- * @param notification
  */
-function startNewRound(notification)
+function startNewRound()
 {
-    closeNotification(notification);
-    bingoCardInstance.resetItems();
+    bingoCardInstance = React.render(<BingoCard />, document.getElementById('content'));
     socket.emit('new', retrieveSessionId());
 }

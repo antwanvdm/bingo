@@ -13,7 +13,9 @@ var javascriptFiles = [
     'node_modules/socket.io-client/socket.io.js',
     'js/src/main.js',
     'js/src/modules/BingoItem.js',
-    'js/src/modules/BingoCard.js'
+    'js/src/modules/BingoCard.js',
+    'js/src/modules/WaitRound.js',
+    'js/src/modules/EndGame.js'
 ];
 
 /**

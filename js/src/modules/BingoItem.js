@@ -3,7 +3,6 @@
  * @classdesc A BingoItem featured on the BingoCard
  */
 var BingoItem = React.createClass({
-
     /**
      * Render this component
      * @public
