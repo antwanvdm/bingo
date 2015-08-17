@@ -68,7 +68,8 @@ function setSocketListeners()
  */
 function socketItemsListener(items)
 {
-    socket.on('status', socketStatusListener);
+    //@Todo: Check if we can find a better solution than this, maybe keeping track of whether a user is playing or not
+    socket.removeListener('status', socketStatusListener).on('status', socketStatusListener);
     bingoCardInstance.setState({items: items});
 }
 
