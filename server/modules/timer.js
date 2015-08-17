@@ -1,6 +1,8 @@
+var settings = require('./settings.js');
+
 module.exports = {
-    totalSeconds: 10,
-    currentSeconds: 10,
+    totalSeconds: settings.secondsBeforeNewRound,
+    currentSeconds: settings.secondsBeforeNewRound,
     interval: null,
     events: null,
 

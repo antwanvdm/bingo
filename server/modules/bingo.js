@@ -1,12 +1,13 @@
 var utils = require('./utils.js');
+var settings = require('./settings.js');
 
 module.exports = {
     //Load data from JSON
     allItems: require('../data/items.json'),
     playerItems: {},
     checkedItems: [],
-    cardsPerPlayer: 16,
-    maxStartItemsCheckedOf: 3,
+    cardsPerPlayer: settings.cardsPerPlayer,
+    maxStartItemsCheckedOf: settings.maxStartItemsCheckedOf,
 
     /**
      * Get an array of randomly selected items
