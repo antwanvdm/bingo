@@ -9,3 +9,36 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
+
+.bingo-item {
+    background-color:#fafafa;
+    width:315px;
+    height: 195px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    float: left;
+    margin-bottom: 12px;
+}
+
+.bingo-item:not(:last-child) {
+    margin-right: 12px;
+}
+
+h1{
+    font-size:21px;
+    color:#e8115a;
+}
+
+.description{
+    font-size:14px;
+    color:#414141;
+    font-style: italic;
+}
+
+.difficulty{
+    font-size:14px;
+    color:#222222;
+    font-weight: 900;
+}
