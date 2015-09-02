@@ -1,3 +1,11 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 body {
     background: #4a4391;
     color: #414141;
@@ -8,6 +16,11 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}
+
+.bingoCard{
+    margin:0 auto;
+    max-width:985px;
 }
 
 .bingo-item {
@@ -26,9 +39,15 @@ body {
     margin-right: 12px;
 }
 
-h1{
+.float-right{
+    float:right;
+}
+
+.title{
     font-size:21px;
     color:#e8115a;
+    font-weight:normal;
+    margin-bottom:15px;
 }
 
 .description{
@@ -41,4 +60,35 @@ h1{
     font-size:14px;
     color:#222222;
     font-weight: 900;
+    margin-right:15px;
+}
+
+.panel.top{
+    padding:23px;
+}
+
+.panel.bottom{
+    background-color:#fafafa;
+    border-top:1px solid #f0f0f0;
+    padding:15px 25px;
+    position:absolute;
+    bottom:0;
+    width:100%;
+}
+
+.icon{
+    width:60px;
+    height:60px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.10);
+    background-color:#fff;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    position:absolute;
+    top:-30px;
+    background-image:url('../img/no_icon.png');
+}
+
+.strike-through{
+    text-decoration: line-through;
+    opacity: 0.8;
 }

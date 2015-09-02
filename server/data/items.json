@@ -1,192 +1,230 @@
 [
-    {
-        "text": "Amanda wordt woest",
-        "difficulty": 5,
-        "id": 0
-    },
-    {
-        "text": "Amanda snauwt Jon af",
-        "difficulty": 5,
-        "id": 1
-    },
-    {
-        "text": "Amanda beledigd iets of iemand",
-        "difficulty": 5,
-        "id": 2
-    },
-    {
-        "text": "Sam smith meezingen",
-        "difficulty": 10,
-        "id": 3
-    },
-    {
-        "text": "Harm niest",
-        "difficulty": 5,
-        "id": 4
-    },
-    {
-        "text": "Skippybal wordt geschopt tussen Boyd & Antwan",
-        "difficulty": 5,
-        "id": 5
-    },
-    {
-        "text": "Boyd is te laat",
-        "difficulty": 10,
-        "id": 6
-    },
-    {
-        "text": "Antwan zegt: 'Ik heb veel ... maar dit ...'",
-        "difficulty": 5,
-        "id": 7
-    },
-    {
-        "text": "Jon doet tof",
-        "difficulty": 5,
-        "id": 8
-    },
-    {
-        "text": "Jon is woest",
-        "difficulty": 15,
-        "id": 9
-    },
-    {
-        "text": "'Trek in een bammetje' om 12:28",
-        "difficulty": 5,
-        "id": 10
-    },
-    {
-        "text": "Ruud krijgt punthoofd van onze muziek",
-        "difficulty": 20,
-        "id": 11
-    },
-    {
-        "text": "Ruud SOLR/BackBone verhalen",
-        "difficulty": 20,
-        "id": 12
-    },
-    {
-        "text": "Ruud is klaar met mongo/phalcon",
-        "difficulty": 15,
-        "id": 13
-    },
-    {
-        "text": "'Sorry dat ik besta'",
-        "difficulty": 5,
-        "id": 14
-    },
-    {
-        "text": "Smerige praat tijdens de pauze",
-        "difficulty": 10,
-        "id": 15
-    },
-    {
-        "text": "De 'waarom eigenlijk?' vraag",
-        "difficulty": 5,
-        "id": 16
-    },
-    {
-        "text": "omnomnom zeggen",
-        "difficulty": 10,
-        "id": 17
-    },
-    {
-        "text": "Iets met 1000",
-        "difficulty": 5,
-        "id": 18
-    },
-    {
-        "text": "Iemand wordt uitgemaakt voor smeerpoets",
-        "difficulty": 10,
-        "id": 19
-    },
-    {
-        "text": "Iemand wordt uitgemaakt voor player",
-        "difficulty": 10,
-        "id": 20
-    },
-    {
-        "text": "Onderonsje over smeerpoetsenapp",
-        "difficulty": 20,
-        "id": 21
-    },
-    {
-        "text": "De Bruin heeft te maken met amateurs en hobbyisten",
-        "difficulty": 20,
-        "id": 22
-    },
-    {
-        "text": "Commit op de verkeerde branch",
-        "difficulty": 15,
-        "id": 23
-    },
-    {
-        "text": "Antwan is woest op het leven",
-        "difficulty": 10,
-        "id": 24
-    },
-    {
-        "text": "Bergen op Zoom wordt genoemd / belachelijk gemaakt",
-        "difficulty": 10,
-        "id": 25
-    },
-    {
-        "text": "Schiedam wordt genoemd / belachelijk gemaakt",
-        "difficulty": 10,
-        "id": 26
-    },
-    {
-        "text": "Iemand is 'verward'",
-        "difficulty": 5,
-        "id": 27
-    },
-    {
-        "text": "Stefan is woest op zijn laptop",
-        "difficulty": 10,
-        "id": 28
-    },
-    {
-        "text": "Telefoon wordt op iemands bureau gelegd",
-        "difficulty": 5,
-        "id": 29
-    },
-    {
-        "text": "Jon, wanneer ga je trouwen?",
-        "difficulty": 10,
-        "id": 30
-    },
-    {
-        "text": "'Dankje!'",
-        "difficulty": 5,
-        "id": 31
-    },
-    {
-        "text": "Antwan maakt een dubbelzinnige opmerking naar/over vrouwen",
-        "difficulty": 10,
-        "id": 32
-    },
-    {
-        "text": "Iets over 'het leven'",
-        "difficulty": 10,
-        "id": 33
-    },
-    {
-        "text": "Iemand vraagt of je 'weleens zonder tandjes hebt gelachen' o.i.d.",
-        "difficulty": 10,
-        "id": 34
-    },
-    {
-        "text": "Wat gebeurt er eigenlijk allemaal?!",
-        "difficulty": 5,
-        "id": 35
-    },
-    {
-        "text": "#basis",
-        "difficulty": 10,
-        "id": 36
-    },
-    {
-        "text": "Beste vriend, AF!",
-        "difficulty": 10,
-        "id": 37
-    }
+  {
+    "title": "Amanda wordt woest",
+    "description": "",
+    "difficulty": 5,
+    "id": 0
+  },
+  {
+    "title": "Amanda snauwt Jon af",
+    "description": "",
+    "difficulty": 5,
+    "id": 1
+  },
+  {
+    "title": "Amanda beledigd iets of iemand",
+    "description": "You'd better hide!",
+    "difficulty": 5,
+    "id": 2
+  },
+  {
+    "title": "Sam smith meezingen",
+    "description": "Staaaay wiiiithh meeeee...",
+    "difficulty": 10,
+    "id": 3
+  },
+  {
+    "title": "HAATSJOEEE",
+    "description": "Harm niest",
+    "difficulty": 5,
+    "id": 4
+  },
+  {
+    "title": "Skippybal wordt geschopt",
+    "description": "Tussen Boyd & Antwan",
+    "difficulty": 5,
+    "id": 5
+  },
+  {
+    "title": "Te laat!",
+    "description": "Boyd natuurlijk.",
+    "difficulty": 10,
+    "id": 6
+  },
+  {
+    "title": "Antwan zegt:",
+    "description": "'Ik heb veel ... maar dit ...'",
+    "difficulty": 5,
+    "id": 7
+  },
+  {
+    "title": "Jon doet tof",
+    "description": "Wanneer niet?",
+    "difficulty": 5,
+    "id": 8
+  },
+  {
+    "title": "Jon is woest",
+    "description": "",
+    "difficulty": 15,
+    "id": 9
+  },
+  {
+    "title": "Iemand zegt: 'Trek in een bammetje'",
+    "description": "Om precies 12:28, elke dag weer.",
+    "difficulty": 5,
+    "id": 10
+  },
+  {
+    "title": "Ruud krijgt een punthoofd",
+    "description": "Van onze kauwgomballen muziek.",
+    "difficulty": 20,
+    "id": 11
+  },
+  {
+    "title": "Ruud praat over:",
+    "description": "SOLR/BackBone verhalen.",
+    "difficulty": 20,
+    "id": 12
+  },
+  {
+    "title": "Ruud is helemal klaar met:",
+    "description": "Mongo/phalcon combinatie. Alleen maar bugs!",
+    "difficulty": 15,
+    "id": 13
+  },
+  {
+    "title": "Iemand zegt:",
+    "description": "'Sorry dat ik besta'",
+    "difficulty": 5,
+    "id": 14
+  },
+  {
+    "title": "Smerige praat tijdens de pauze",
+    "description": "#smeerballerij",
+    "difficulty": 10,
+    "id": 15
+  },
+  {
+    "title": "De 'waarom eigenlijk?' vraag",
+    "description": "",
+    "difficulty": 5,
+    "id": 16
+  },
+  {
+    "title": "omnomnom",
+    "description": "Tijdens de pauze, of elk ander moment van de dag.",
+    "difficulty": 10,
+    "id": 17
+  },
+  {
+    "title": "Iets met 1000",
+    "description": "1000 honger, 1000 bingo, 1000 stress.",
+    "difficulty": 5,
+    "id": 18
+  },
+  {
+    "title": "Iemand wordt uitgemaakt:",
+    "description": "Voor smeerpoets",
+    "difficulty": 10,
+    "id": 19
+  },
+  {
+    "title": "Iemand wordt uitgemaakt:",
+    "description": "Voor player, ook soms wel master player genoemd.",
+    "difficulty": 10,
+    "id": 20
+  },
+  {
+    "title": "Onderonsje over smeerpoetsenapp",
+    "description": "Sssst!",
+    "difficulty": 20,
+    "id": 21
+  },
+  {
+    "title": "De Bruin",
+    "description": "Heeft te maken met amateurs en hobbyisten...",
+    "difficulty": 20,
+    "id": 22
+  },
+  {
+    "title": "Commit op de verkeerde branch",
+    "description": "Not again!",
+    "difficulty": 15,
+    "id": 23
+  },
+  {
+    "title": "Antwan is woest!",
+    "description": "Op het leven.",
+    "difficulty": 10,
+    "id": 24
+  },
+  {
+    "title": "Bergen op Zoom",
+    "description": "Wordt genoemd en/of belachelijk gemaakt. Vaak beide.",
+    "difficulty": 10,
+    "id": 25
+  },
+  {
+    "title": "Schiedam",
+    "description": "Wordt genoemd / belachelijk gemaakt.",
+    "difficulty": 10,
+    "id": 26
+  },
+  {
+    "title": "Iemand is 'verward'",
+    "description": "???",
+    "difficulty": 5,
+    "id": 27
+  },
+  {
+    "title": "Stefan is woest!",
+    "description": "Op zijn laptop.",
+    "difficulty": 10,
+    "id": 28
+  },
+  {
+    "title": "Telefoon wordt op iemands bureau gelegd",
+    "description": "Of in Jon zijn tas.",
+    "difficulty": 5,
+    "id": 29
+  },
+  {
+    "title": "Iemand vraagt:",
+    "description": "'Jon, wanneer ga je trouwen?'",
+    "difficulty": 10,
+    "id": 30
+  },
+  {
+    "title": "'Dankje!'",
+    "description": "",
+    "difficulty": 5,
+    "id": 31
+  },
+  {
+    "title": "Antwan maakt een operking:",
+    "description": "Natuurlijk wel een dubbelzinnige opmerking naar/over vrouwen.",
+    "difficulty": 10,
+    "id": 32
+  },
+  {
+    "title": "Iets over 'het leven'",
+    "description": "",
+    "difficulty": 10,
+    "id": 33
+  },
+  {
+    "title": "Iemand vraagt:",
+    "description": "'Heb je weleens zonder tandjes gelachen?' o.i.d.",
+    "difficulty": 10,
+    "id": 34
+  },
+  {
+    "title": "Wat gebeurt er eigenlijk allemaal?!",
+    "description": "",
+    "difficulty": 5,
+    "id": 35
+  },
+  {
+    "title": "#basis",
+    "description": "",
+    "difficulty": 10,
+    "id": 36
+  },
+  {
+    "title": "Beste vriend, AF!",
+    "description": "#housewarming",
+    "difficulty": 10,
+    "id": 37
+  }
 ]

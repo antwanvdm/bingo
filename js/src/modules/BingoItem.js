@@ -15,11 +15,12 @@ var BingoItem = React.createClass({
         return (
             <div className={className} data-id={this.props.id} onClick={this.clickCard}>
                 <div className="panel top">
-                    <div className="description">{this.props.string}</div>
+                    <div className="title">{this.props.title}</div>
+                    <div className="description">{this.props.description}</div>
                 </div>
                 <div className="panel bottom">
                     <div className="icon"></div>
-                    <div>
+                    <div className="float-right">
                         <span className="difficulty">{this.props.difficulty}</span>
                         <span>points</span>
                     </div>

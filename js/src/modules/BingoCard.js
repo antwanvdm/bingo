@@ -38,7 +38,7 @@ var BingoCard = React.createClass({
         return this.state.items.map(function (item)
         {
             var checked = (typeof item.checked !== "undefined");
-            return <BingoItem string={item.text} difficulty={item.difficulty} id={item.id} checked={checked}/>;
+            return <BingoItem title={item.title} description={item.description} difficulty={item.difficulty} id={item.id} checked={checked}/>;
         });
     },
 
