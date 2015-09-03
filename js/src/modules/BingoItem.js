@@ -37,7 +37,7 @@ var BingoItem = React.createClass({
      */
     clickCard: function (e)
     {
-        e.target.classList.add('strike-through');
-        socket.emit('click', e.target.dataset['id']);
+        e.currentTarget.classList.add('strike-through');
+        socket.emit('click', e.currentTarget.dataset['id']);
     }
 });
