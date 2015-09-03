@@ -14,10 +14,19 @@ you can change them in the server/modules/settings.js
 To compile the javascript to a final.js file, you should run the gulp task.
 The gulpfile is present within the root of the project.
 
+##Roadmap
+* Scheduled time blocks to start a new round
+* Connect items to a time window (to prevent time dependent items)
+* User login connected to API (Basecamp for dpdk or FB login)
+* Voting system to prevent lies. (no false bingos or notifications allowed) - place in notifcations popup
+* After a item has been marked as 'checked', other users need to confirm this (minimum half of players)
+* Upgrade the winpage, make it awesome with confetti or something!
+* Ranking system on user level (history of scores)
+
 ##Changelog
 ###v1.0
 ####TODO
-* CSS Front-end
+* CSS Front-end uitbreiden
 * Notifications with custom image
 * Play with a actual name, to prevent ugly hash as 'name'
 * File watcher on data JSON to prevent server restart. (change items with start of new round)
