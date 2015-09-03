@@ -90,7 +90,7 @@ function socketFullListener(items)
  */
 function socketStatusListener(item)
 {
-    var notification = new Notification("Bingo update: " + item.text);
+    var notification = new Notification("Bingo update: " + item.title);
     setTimeout(closeNotification.bind(this, notification), 3000);
     bingoCardInstance.checkItem(item);
 }
